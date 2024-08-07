@@ -26,7 +26,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "248963"
+  resourceVersion: "249165"
   uid: f859ca99-35eb-4763-9bba-931bf36b1ce0
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -733,6 +733,32 @@ status:
           namespace: default
         status: ready
         type: vflow-secret
+  csiReferencedResources:
+  - groupVersionKind:
+      kind: Secret
+      version: v1
+    namespacedName:
+      name: helm-values-master-default
+      namespace: installation
+  - groupVersionKind:
+      kind: ConfigMap
+      version: v1
+    namespacedName:
+      name: workload-cluster-info
+      namespace: installation
+  - groupVersionKind:
+      group: source.toolkit.fluxcd.io
+      kind: HelmRepository
+      version: v1
+    namespacedName:
+      name: csi-artifactory
+      namespace: installation
+  - groupVersionKind:
+      kind: Secret
+      version: v1
+    namespacedName:
+      name: hana-staging-user
+      namespace: installation
   gardenerProjectName: di-dev
   gardenerShootName: dis-upktx
   hanaCloudInstanceID: dc945aa8-eb51-4906-8fe5-7f8a839d9336
