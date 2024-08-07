@@ -18,7 +18,7 @@ metadata:
     cluster.dis.datahub.sap.com/instance-name: i517651-aws-master-89gvf
     cluster.dis.datahub.sap.com/shoot-name: dis-oj5nd
     dis.datahub.sap.com/cluster-group: i517651-aws-master
-    foo: bar7
+    foo: bar8
   managedFields:
   - apiVersion: dis.datahub.sap.com/v1alpha1
     fieldsType: FieldsV1
@@ -560,7 +560,7 @@ metadata:
           f:foo: {}
     manager: kubectl-label
     operation: Update
-    time: "2024-08-07T06:54:40Z"
+    time: "2024-08-07T06:55:30Z"
   name: i517651-aws-master-89gvf
   namespace: default
   ownerReferences:
@@ -568,7 +568,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "206685"
+  resourceVersion: "210102"
   uid: 232a8874-0261-4f70-878d-390a6f80cf72
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
