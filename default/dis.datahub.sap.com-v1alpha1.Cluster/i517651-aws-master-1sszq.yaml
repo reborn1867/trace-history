@@ -4,8 +4,8 @@ metadata:
   annotations:
     core.csi.sap.com/default-cluster: i517651-aws-reg
     core.csi.sap.com/managed-by: di-cluster-operator
-    dis.datahub.sap.com/run-post-action-once: 2024-08-07 08:30:21.703821216 +0000
-      UTC m=+22213.074335705
+    dis.datahub.sap.com/run-post-action-once: 2024-08-07 08:30:36.502518601 +0000
+      UTC m=+22227.873033075
     dis.datahub.sap.com/uninitialized: "false"
     foo: bar
     foo1: bar1
@@ -29,7 +29,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "278485"
+  resourceVersion: "278640"
   uid: f859ca99-35eb-4763-9bba-931bf36b1ce0
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
