@@ -27,7 +27,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "407532"
+  resourceVersion: "439231"
   uid: f859ca99-35eb-4763-9bba-931bf36b1ce0
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -683,10 +683,10 @@ status:
     mainSecretName: i517651-aws-master-1sszq
   conditions:
   - lastTransitionTime: "2024-08-07T08:20:18Z"
-    message: ready
+    message: shoot-and-hana-instance
     observedGeneration: 2
-    reason: ready
-    status: "True"
+    reason: shoot_and_hana_instance
+    status: "False"
     type: ResourceReady
   - lastTransitionTime: "2024-08-07T08:20:12Z"
     message: Infrastructure CR status is not ready
@@ -778,9 +778,9 @@ status:
   hanaCloudInstanceID: dc945aa8-eb51-4906-8fe5-7f8a839d9336
   hanaCloudServiceSecretRef: vora.conf.hana-password
   kubernetesVersion: 1.29.7
-  lastMessage: ready
-  lastStage: ready
-  lastStageChangeTimestamp: "2024-08-07T11:33:05Z"
+  lastMessage: shoot-and-hana-instance
+  lastStage: shoot-and-hana-instance
+  lastStageChangeTimestamp: "2024-08-07T12:18:17Z"
   meteringServiceInstanceID: 361f61b4-7a15-4bbc-b073-01db5ead24d8
   meteringServiceSecretRef: metering-sapcp-credentials
   networkingCIDR: 10.250.0.0/16
