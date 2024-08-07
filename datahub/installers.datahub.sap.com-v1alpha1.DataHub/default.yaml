@@ -3,7 +3,6 @@ kind: DataHub
 metadata:
   annotations:
     com.sap.datahub.installers.dependency.runlevel-mark: preRunLevelStarted
-    com.sap.datahub.installers.dependency.upgrade-mark: 1.1-7992.41884eb0
     com.sap.datahub.installers.init.version: 1.1-7969.f9dce01a
   creationTimestamp: "2024-08-07T07:58:49Z"
   finalizers:
@@ -496,5 +495,4 @@ status:
     timestamp: "2024-08-07T07:58:54Z"
     type: postRunLevelStarted
   expiresAt: "2024-08-07T08:58:55Z"
-  startedAt: "2024-08-07T07:58:55Z"
-  state: Ready
+  state: Pending
