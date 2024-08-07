@@ -27,7 +27,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "282030"
+  resourceVersion: "282037"
   uid: f859ca99-35eb-4763-9bba-931bf36b1ce0
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -689,10 +689,10 @@ status:
     status: "True"
     type: ResourceReady
   - lastTransitionTime: "2024-08-07T08:20:12Z"
-    message: Infrastructure CR status is ready
+    message: Infrastructure CR status is not ready
     observedGeneration: 2
-    reason: InfrastructureIsReady
-    status: "True"
+    reason: InfrastructureIsNotReady
+    status: "False"
     type: InfrastructureReady
   - lastTransitionTime: "2024-08-07T08:20:13Z"
     message: ready
@@ -777,7 +777,7 @@ status:
   gardenerShootName: dis-upktx
   hanaCloudInstanceID: dc945aa8-eb51-4906-8fe5-7f8a839d9336
   hanaCloudServiceSecretRef: vora.conf.hana-password
-  kubernetesVersion: 1.29.5
+  kubernetesVersion: 1.29.7
   lastMessage: ready
   lastStage: ready
   lastStageChangeTimestamp: "2024-08-07T08:35:05Z"
@@ -789,10 +789,10 @@ status:
   - 3.126.49.109
   shootKubeconfigExpirationTimestamp: "2024-08-08T07:43:15Z"
   shootLastOperation:
-    description: Shoot cluster has been successfully reconciled.
-    lastUpdateTime: "2024-08-07T07:43:08Z"
-    progress: 100
-    state: Succeeded
+    description: Starting Shoot cluster reconciliation
+    lastUpdateTime: "2024-08-07T11:25:36Z"
+    progress: 0
+    state: Processing
     type: Reconcile
   vpcID: vpc-035a41a96171c71ac
   vsystemIngressHostName: vsystem.ingress.dis-upktx.di-dev.shoot.canary.k8s-hana.ondemand.com
