@@ -8,12 +8,12 @@ metadata:
   finalizers:
   - com.sap.datahub.installers.dependency
   - datahub-controller.datahub.sap.com
-  generation: 2
+  generation: 3
   labels:
     bowen.watch: "true"
   name: default
   namespace: datahub
-  resourceVersion: "25010"
+  resourceVersion: "32926"
   uid: bcae3397-ff8a-46df-8241-487562d7fa86
 spec:
   backupCleanupCronSchedule: 0 0 * * *
@@ -148,7 +148,7 @@ spec:
       datahub.sap.com/pool-static: schedule
     system:
       datahub.sap.com/pool-system: schedule
-  package: 1.1-7969.f9dce01a
+  package: 1.1-7992.41884eb0
   postDenyAllIngress: true
   proxy: {}
   runLevel: Started
@@ -216,11 +216,11 @@ spec:
       vsystemClientID: ""
     layerStrategies:
     - forceUpdateExtensionStrategyLayers: true
-      name: sdi-default-extension-strategy-1.1-7969.f9dce01a
-      parentStrategy: strat-default-1.1-7969.f9dce01a
+      name: sdi-default-extension-strategy-1.1-7992.41884eb0
+      parentStrategy: strat-default-1.1-7992.41884eb0
     - forceUpdateExtensionStrategyLayers: true
-      name: sdi-system-extension-strategy-1.1-7969.f9dce01a
-      parentStrategy: strat-system-1.1-7969.f9dce01a
+      name: sdi-system-extension-strategy-1.1-7992.41884eb0
+      parentStrategy: strat-system-1.1-7992.41884eb0
     - layers:
       - vsolution-app-base-dis
       - vsolution-dis-flowagent
@@ -230,7 +230,7 @@ spec:
       - vflow-sub-python36-dis
       - vflow-sub-protocol7-dis
       - vsolution-vflow-sub-abap
-      name: strat-default-1.1-7969.f9dce01a
+      name: strat-default-1.1-7992.41884eb0
     - layers:
       - vsolution-diagnostics-base
       - vsolution-vsystem-ui
@@ -249,7 +249,7 @@ spec:
       - cfw-bigquery-connector
       - cfw-confluent-connector
       - cfw-mssql-connector
-      name: strat-system-1.1-7969.f9dce01a
+      name: strat-system-1.1-7992.41884eb0
     networkPolicies:
       enabled: true
     overrides: |-
@@ -373,7 +373,7 @@ spec:
     - cloud: {}
       isBlueGreenUpgrade: true
       name: default
-      strategyName: sdi-default-extension-strategy-1.1-7969.f9dce01a
+      strategyName: sdi-default-extension-strategy-1.1-7992.41884eb0
       tenantAdminCreds: vora.conf.tenants.defaultadmin
       vsystemAppParams:
         vflow.baseRegistry: 726853116465.dkr.ecr.eu-central-1.amazonaws.com/ds
@@ -407,7 +407,7 @@ spec:
       - cfw-mssql-connector
       - platform-proxy
       - metrics-collector
-      strategyName: sdi-system-extension-strategy-1.1-7969.f9dce01a
+      strategyName: sdi-system-extension-strategy-1.1-7992.41884eb0
       tenantAdminCreds: vora.conf.initial.user
       vsystemAppParams:
         cfw.connector.registry.confluent.connector.enabled: "true"
