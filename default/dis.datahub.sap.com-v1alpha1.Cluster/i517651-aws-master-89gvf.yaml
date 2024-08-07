@@ -1,0 +1,809 @@
+apiVersion: dis.datahub.sap.com/v1alpha1
+kind: Cluster
+metadata:
+  annotations:
+    core.csi.sap.com/default-cluster: i517651-aws-reg
+    core.csi.sap.com/managed-by: di-cluster-operator
+    dis.datahub.sap.com/uninitialized: "false"
+  creationTimestamp: "2024-08-07T02:16:38Z"
+  finalizers:
+  - cluster.controller.dis.datahub
+  generation: 1
+  labels:
+    bowen.watch: "true"
+    cluster-group.dis.datahub.sap.com/csi-landscape: i517651-aws
+    cluster-group.dis.datahub.sap.com/csi-project: di-dev
+    cluster-group.dis.datahub.sap.com/csi-provider-type: aws
+    cluster-group.dis.datahub.sap.com/di-landscape: master
+    cluster.dis.datahub.sap.com/instance-name: i517651-aws-master-89gvf
+    cluster.dis.datahub.sap.com/shoot-name: dis-oj5nd
+    dis.datahub.sap.com/cluster-group: i517651-aws-master
+    foo: bar19
+  name: i517651-aws-master-89gvf
+  namespace: default
+  ownerReferences:
+  - apiVersion: dis.datahub.sap.com/v1alpha1
+    kind: ClusterGroup
+    name: i517651-aws-master
+    uid: 47fded03-7344-4ac6-acd9-da5c275e4825
+  resourceVersion: "235146"
+  uid: 232a8874-0261-4f70-878d-390a6f80cf72
+spec:
+  auditLogPolicyForGardener: di-gardener-audit-policy
+  auditLogServiceKey:
+    credentialConfig: {}
+    enabled: true
+    organizationID: fe18e943-d79b-4413-be12-8ca24a4905f9
+    serviceInstanceName: auditlog
+    spaceID: aef94898-b503-42bb-9cf6-89d95c344895
+    viewerSubaccountGUID: e4af0f60-514e-4923-8c60-fd597967ccea
+  autoscalerOverprovisioning:
+    enabled: true
+    helmChartRef:
+      field: autoscaler-overprovisioning
+      name: di-resources-1.0-197.409eb87git
+  backupResources:
+    credentialConfig: {}
+    enabled: false
+  cidr: 10.250.0.0/16
+  cloudRegion: eu-central-1
+  clusterRegistry: 768904107031.dkr.ecr.eu-central-1.amazonaws.com
+  connectivityProxy:
+    connectivity:
+      name: connectivity-orcastarkiller
+      namespace: default
+    enabled: true
+    helmChartRef:
+      field: connectivity-proxy
+      name: di-resources-1.0-197.409eb87git
+    ingressCertificateSecretName: dis-tls
+    xsuaa:
+      name: xsuaa-orcastarkiller
+      namespace: default
+  credentialsBinding:
+    cloudFoundry:
+      name: cloudfoundry-credentials
+    cloudFoundryConfig:
+      secretRef:
+        name: cloudfoundry-credentials
+    gardener:
+      name: gardener-di-dev
+    gardenerConfig:
+      project: di-dev
+      secretRef:
+        name: gardener-di-dev
+    provider:
+      name: aws-768904107031
+    providerConfig:
+      aws:
+        infraIAM:
+          secretRef:
+            name: aws-768904107031
+  csiFluxcdHelmController:
+    enabled: true
+    helmChartRef:
+      field: csi-fluxcd-helm-controller
+      name: di-resources-1.0-197.409eb87git
+    registry: 045760241950.dkr.ecr.eu-central-1.amazonaws.com/
+  csiFluxcdSourceController:
+    enabled: true
+    helmChartRef:
+      field: csi-fluxcd-source-controller
+      name: di-resources-1.0-197.409eb87git
+    registry: 045760241950.dkr.ecr.eu-central-1.amazonaws.com/
+  csiInstallationOperator:
+    enabled: true
+    helmChartRef:
+      field: csi-installation-operator
+      name: di-resources-1.0-197.409eb87git
+    registry: 045760241950.dkr.ecr.eu-central-1.amazonaws.com/
+  customIngressController:
+    enabled: true
+    helmChartRef:
+      field: nginx-ingress
+      name: di-resources-1.0-197.409eb87git
+    jsonValues:
+    - key: controller.updateStrategy
+      value: "{\n  \"type\": \"RollingUpdate\", \n  \"rollingUpdate\": \n    {\n      \"maxUnavailable\":
+        0,\n      \"maxSurge\": 2\n    }\n}\n"
+    - key: controller.affinity
+      value: "{\n  \"requiredDuringSchedulingIgnoredDuringExecution\":\n    {\n      \"topologyKey\":
+        \"kubernetes.io/hostname\",\n      \"labelSelector\":\n        {\n          \"matchExpressions\":
+        \n            [\n              {\n                \"key\":\"app.kubernetes.io/name\",\n
+        \               \"operator\": \"In\",\n                \"values\":[\"nginx-ingress\"]\n
+        \             },\n              {\n                \"key\":\"app.kubernetes.io/instance\",\n
+        \               \"operator\": \"In\",\n                \"values\":[\"nginx-ingress\"]\n
+        \             },\n              {\n                \"key\":\"app.kubernetes.io/component\",\n
+        \               \"operator\": \"In\",\n                \"values\":[\"controller\"]\n
+        \             }\n            ]\n        }\n    }\n}\n"
+    values:
+    - key: controller.replicaCount
+      value: "2"
+    valuesRef: {}
+  datahub:
+    datahubOperatorParams:
+      limits:
+        memory: 5000Mi
+    defaultTenantName: default
+    enabled: true
+    installerRepo: com.sap.hana.cloud.cloudinfrastructure/csi-di-service-assembly-master
+    runLevel: Started
+    spec:
+      auditlog:
+        hpaConfig:
+          enabled: true
+          maxReplicas: 10
+          minReplicas: 2
+        overrides: |-
+          auditlog:
+            store: sapcp
+            subaccountId: e4af0f60-514e-4923-8c60-fd597967ccea
+            systemSubaccountId: e4af0f60-514e-4923-8c60-fd597967ccea
+          resourceDeployment:
+            certManagerDi: false
+        replicas: 2
+      backupCleanupCronSchedule: 0 0 * * *
+      backupCronSchedule: 0 0 * * *
+      backupRetentionPeriod: 1.296e+06
+      deploymentType: DHaaS
+      deployments:
+      - vsystem
+      - diagnostic
+      - storage-gateway
+      diagnostic:
+        csi-integration:
+          enabled: true
+        diagnosticsStack:
+          enabled: false
+        overrides: |-
+          resourceDeployment:
+            certManagerDi: false
+      disabledHooks:
+      - ml-api-scenario-migration
+      helmVersion: v3
+      networkPolicies:
+        enabled: true
+      nodePoolAssignments:
+        auditlog: static
+        storage-gateway: static
+        vsystem.Apps: dynamic
+      nodePools:
+        dynamic:
+          datahub.sap.com/pool-dynamic: schedule
+        static:
+          datahub.sap.com/pool-static: schedule
+        system:
+          datahub.sap.com/pool-system: schedule
+      podSecurityPolicies:
+        enabled: true
+      postDenyAllIngress: true
+      storageGateway:
+        overrides: |-
+          storagegateway:
+            resourceDeployment:
+              certManagerDi: false
+        replicas: 3
+      uaa:
+        cpuRequest: 400m
+        hpaConfig:
+          enabled: true
+          maxReplicas: 5
+          minReplicas: 2
+        memoryLimit: "2048"
+        memoryRequest: "512"
+      vsystem:
+        auditlog:
+          endpoint: https://auditlog:3030
+        deploymentInfo: {}
+        deploymentType: DHaaS
+        initialUserCreation:
+          secretName: vora.conf.initial.user
+        layerStrategies:
+        - forceUpdateExtensionStrategyLayers: true
+          name: sdi-default-extension-strategy-1.1-7969.f9dce01a
+          parentStrategy: strat-default-1.1-7969.f9dce01a
+        - forceUpdateExtensionStrategyLayers: true
+          name: sdi-system-extension-strategy-1.1-7969.f9dce01a
+          parentStrategy: strat-system-1.1-7969.f9dce01a
+        - layers:
+          - vsolution-app-base-dis
+          - vsolution-dis-flowagent
+          - vsolution-rms-worker
+          - vflow-engine
+          - vflow-pysix-subengine
+          - vflow-sub-python36-dis
+          - vflow-sub-protocol7-dis
+          - vsolution-vflow-sub-abap
+          name: strat-default-1.1-7969.f9dce01a
+        - layers:
+          - vsolution-diagnostics-base
+          - vsolution-vsystem-ui
+          - vsolution-shared-ui
+          - connection-service
+          - dis-infrastructure
+          - vsolution-rms
+          - vsolution-modeler-ui
+          - vrelease-vflow-cluster-apps
+          - data-integration-gateway
+          - vsolution-tachyon
+          - vsolution-axino-dis
+          - vsolution-hyperon
+          - cfw-gateway
+          - cfw-connector-registry
+          - cfw-bigquery-connector
+          - cfw-confluent-connector
+          - cfw-mssql-connector
+          name: strat-system-1.1-7969.f9dce01a
+        networkPolicies:
+          enabled: true
+        overrides: |-
+          resourceDeployment:
+            certManagerDi: false
+          observability:
+            deployGrafanaDashboard: true
+            deployPrometheusAlerts: true
+            addPrometheusLabel: false
+          applicationRuntimeStorage:
+            enabled: false
+          resources:
+            vsystem:
+              requests:
+                cpu: "500m"
+                memory: "1500Mi"
+              limits:
+                cpu: "2"
+                memory: "8Gi"
+            auth:
+              requests:
+                cpu: "100m"
+                memory: "256Mi"
+              limits:
+                cpu: "400m"
+                memory: "2Gi"
+            vsystem_vrep:
+              requests:
+                cpu: "500m"
+                memory: "2Gi"
+              limits:
+                cpu: "4"
+                memory: "8Gi"
+          auditlog:
+            store: btp
+            btp:
+              secretName: "auditlog-sapcp-credentials"
+              secretFile: "auditlog-sapcp-credentials"
+              subaccountTenantIdCluster: "e4af0f60-514e-4923-8c60-fd597967ccea"
+              subaccountTenantIdSystem: "e4af0f60-514e-4923-8c60-fd597967ccea"
+              diCloudSetup: false
+              oauth: false
+          vSystem:
+            dataIntegrationService: true
+            natsEnabled: false
+            housekeeperCleanupInterval: 86400
+            housekeeperCleanupTenants: true
+            housekeeperCleanupApps: false
+            housekeeperCleanupWorkloads: false
+            customSchedulerName: ""
+            handlerTimeout: "20m0s"
+            queryHanaMetrics:
+              enabled: true
+            databaseDriver:
+              agent:
+                vsystemUser:
+                  MaxIdleConnectionTime: "10s"
+            features:
+              jwtTokenAuthentication:
+                enabled: true
+                issuers: >-
+                  https://orcastarkiller.authentication.sap.hana.ondemand.com/token_keys
+                  https://starkiller.authentication.sap.hana.ondemand.com/token_keys
+                  https://master.authentication.sap.hana.ondemand.com/token_keys
+                  https://rel.authentication.sap.hana.ondemand.com/token_keys
+                jwksRefreshInterval: 10m
+              blockWorkloadsAccessToHana: false
+              PolicyBundleServer:
+                enabled: true
+                cacheExpiration: 10m
+                cleanupInterval: 30m
+              PolicyBundleClient:
+                initialActivationTimeout: 1m
+                cacheExpiration: 5m
+                minDelay: 24s
+                maxDelay: 30s
+              vsystemGateway:
+                replicas: 2
+              userClientCertificates:
+                tenantCASignatureAlgorithm: rsa
+              enableRestrictedClusterAppPrivileges: false
+            natsMaxInactivity: 24h
+          vRep:
+            nfsSwitch:
+              nfsServerEnabled: false
+              enableVrepApps: false
+              enableVhomeApps: false
+              enableVrepWorkloads: false
+              enableVhomeWorkloads: false
+        solutions:
+        - name: cfw-bigquery-connector
+        - name: cfw-confluent-connector
+        - name: cfw-connector-registry
+        - name: cfw-gateway
+        - name: cfw-mssql-connector
+        - name: connection-service
+        - name: data-integration-gateway
+        - name: dis-infrastructure
+        - name: vflow-engine
+        - name: vflow-pysix-subengine
+        - name: vflow-sub-protocol7-dis
+        - name: vflow-sub-python36-dis
+        - name: vrelease-vflow-cluster-apps
+        - name: vsolution-app-base-dis
+        - name: vsolution-axino-dis
+        - name: vsolution-diagnostics-base
+        - name: vsolution-dis-flowagent
+        - name: vsolution-hyperon
+        - name: vsolution-modeler-ui
+        - name: vsolution-rms
+        - name: vsolution-rms-worker
+        - name: vsolution-shared-ui
+        - name: vsolution-tachyon
+        - name: vsolution-vflow-sub-abap
+        - name: vsolution-vsystem-ui
+        storageClassName: dh-default-ssd-storage-class
+        tenants:
+        - name: default
+          strategyName: sdi-default-extension-strategy-1.1-7969.f9dce01a
+          tenantAdminCreds: vora.conf.tenants.defaultadmin
+          vsystemSecrets:
+          - vflow-secret
+        - name: system
+          scheduledApps:
+          - connection-service
+          - rms
+          - data-integration-gateway
+          - shared
+          - modeler-ui
+          - monitoring-ui
+          - tachyon-service
+          - axino-service
+          - hyperon-service
+          - vflow
+          - vflow-ctrl-main
+          - vflow-ctrl-sub
+          - vflow-diagnostics
+          - vflow-image-build
+          - vflow-runtime-store
+          - cfw-bigquery-connector
+          - cfw-confluent-connector
+          - cfw-mssql-connector
+          strategyName: sdi-system-extension-strategy-1.1-7969.f9dce01a
+          tenantAdminCreds: vora.conf.initial.user
+          vsystemAppParams:
+            cfw.connector.registry.confluent.connector.enabled: "true"
+            cfw.connector.registry.mssql.connector.enabled: "true"
+            cfw.connector.registry.sample.connector.enabled: "true"
+            cfw.gateway.log.level: info
+            connection.service.privileged_ip_ranges: 10.250.0.0/16
+            data.integration.gateway.log.level: debug
+            datahub.axino.maxreplica: "200"
+            datahub.axino.minreplica: "5"
+            datahub.hyperon.log.level: DEBUG
+            diagnostics.gateway.monitoring.prometheusAddress: prometheus.monitoring.svc.cluster.local:9090
+            sap.di.rms.fixed.replicas: "2"
+            sap.di.rms.rt.cpu.limit: 4000m
+            sap.di.rms.rt.memory.limit: 4096Mi
+            sap.di.rms.scale.out.enabled: "true"
+            vflow.apps.requestsCPU: 250m
+            vflow.apps.scaleAverageCPU: "80"
+            vflow.graph.podScheduleTimeout: 20m
+            vflow.image.build.concurrentLimit: "30"
+          vsystemSecrets:
+          - metering-sapcp-credentials
+        vSystem:
+          auditlogAddress: https://auditlog:3030
+          clusterAdminHostnames: diagnostics-prometheus-server,storagegateway
+          serviceType: ClusterIP
+    targetNamespace: datahub
+    targetSystemNamespace: datahub-system
+    updateStrategy:
+      rollingUpdate:
+        parallelism: 30
+      type: RollingUpdate
+    version: 1.1-7969.f9dce01a
+  domainSuffix: shoot.canary.k8s-hana.ondemand.com
+  dynamicScheduler:
+    enabled: false
+    helmChartRef:
+      field: di-dynamic-scheduler
+      name: di-resources-1.0-197.409eb87git
+  featureFlags:
+    createNetworkByInfra: true
+  hanaCloud:
+    credentialConfig: {}
+    enabled: true
+    instanceName: i517651-aws-master-89gvf
+    memory: 32
+    organizationID: fe18e943-d79b-4413-be12-8ca24a4905f9
+    planName: hana
+    serviceKeyName: i517651-aws-master-89gvf-hana
+    serviceName: hana-cloud
+    slaLevel: standard
+    spaceID: a922ab4e-3e5d-4d12-b3bc-9011b3e679ce
+    storage: 120
+    updateStrategy: without_restart
+    vcpu: 2
+  installationRef:
+    name: master-default
+    namespace: installation
+  installerRegistry: 726853116465.dkr.ecr.eu-central-1.amazonaws.com/ds
+  meteringServiceKey:
+    credentialConfig: {}
+    enabled: true
+    organizationID: fe18e943-d79b-4413-be12-8ca24a4905f9
+    serviceInstanceName: metering-service
+    spaceID: aef94898-b503-42bb-9cf6-89d95c344895
+    viewerSubaccountGUID: 638bd7ad-fda6-4552-ac75-3882974f17be
+  metricsCollector:
+    enableFederationReport: false
+    enableFederationTrafficMetricsReporting: false
+    enabled: true
+    subaccountID: 638bd7ad-fda6-4552-ac75-3882974f17be
+  platformProxy:
+    dwcLandscape: orcastarkiller
+    enabled: true
+    platformProxySuffix: -sac-orcastarkiller.cfapps.sap.hana.ondemand.com
+    platformProxyUAAURL: orcastarkiller.authentication.sap.hana.ondemand.com
+  postActions:
+    enabled: true
+    image: 726853116465.dkr.ecr.eu-central-1.amazonaws.com/ds/com.sap.hana.cloud.cloudinfrastructure/csi-di-service-assembly-master:1.1-7969.f9dce01a
+  providerType: aws
+  shootConfig:
+    apiVersion: core.gardener.cloud/v1beta1
+    kind: Shoot
+    spec:
+      addons:
+        nginxIngress:
+          config:
+            large-client-header-buffers: 4 32k
+          enabled: false
+          externalTrafficPolicy: Cluster
+      cloudProfileName: aws
+      dns: {}
+      hibernation:
+        enabled: false
+      kubernetes:
+        clusterAutoscaler:
+          expander: least-waste
+          scaleDownDelayAfterAdd: 10m
+          scaleDownDelayAfterDelete: 10s
+          scaleDownDelayAfterFailure: 10m
+          scaleDownUnneededTime: 10m
+          scaleDownUtilizationThreshold: 0.5
+          scanInterval: 10s
+        kubeAPIServer:
+          admissionPlugins:
+          - config:
+              apiVersion: pod-security.admission.config.k8s.io/v1beta1
+              defaults:
+                audit: privileged
+                audit-version: latest
+                warn: privileged
+                warn-version: latest
+              kind: PodSecurityConfiguration
+            name: PodSecurity
+          auditConfig:
+            auditPolicy:
+              configMapRef:
+                name: di-gardener-audit-policy
+          oidcConfig:
+            clientID: ccebb712-ce5f-49da-aba9-15645ce64af9
+            groupsClaim: groups
+            issuerURL: https://haas.accounts.ondemand.com
+            usernameClaim: mail
+        kubelet:
+          kubeReserved:
+            cpu: 80m
+            memory: 1Gi
+            pid: 20k
+        version: "1.29"
+      maintenance:
+        autoUpdate:
+          kubernetesVersion: true
+          machineImageVersion: false
+        timeWindow:
+          begin: 200000+0000
+          end: 210000+0000
+      networking:
+        nodes: 10.250.0.0/16
+        type: calico
+      provider:
+        infrastructureConfig:
+          apiVersion: aws.provider.extensions.gardener.cloud/v1alpha1
+          kind: InfrastructureConfig
+          networks:
+            vpc: {}
+            zones:
+            - internal: 10.250.200.0/22
+              name: eu-central-1c
+              public: 10.250.212.0/22
+              workers: 10.250.128.0/18
+        type: aws
+        workers:
+        - kubernetes:
+            kubelet:
+              kubeReserved:
+                cpu: 900m
+                memory: 4Gi
+                pid: 20k
+          labels:
+            datahub.sap.com/pool-static: schedule
+            datahub.sap.com/pool-system: schedule
+            dis.datahub.sap.com/worker-type: system
+            node-role.kubernetes.io/system: ""
+          machine:
+            architecture: amd64
+            image:
+              name: gardenlinux
+              version: 1443.9.0
+            type: m5.2xlarge
+          maxSurge: 1
+          maxUnavailable: 0
+          maximum: 4
+          minimum: 4
+          name: static
+          providerConfig:
+            apiVersion: aws.provider.extensions.gardener.cloud/v1alpha1
+            instanceMetadataOptions:
+              httpPutResponseHopLimit: 2
+              httpTokens: required
+            kind: WorkerConfig
+          systemComponents:
+            allow: true
+          volume:
+            size: 100Gi
+            type: gp3
+          zones:
+          - eu-central-1c
+        - kubernetes:
+            kubelet:
+              kubeReserved:
+                cpu: 900m
+                memory: 4Gi
+                pid: 20k
+          labels:
+            datahub.sap.com/pool-dynamic: schedule
+            dis.datahub.sap.com/worker-type: dynamic
+            node-role.kubernetes.io/dynamic: ""
+          machine:
+            architecture: amd64
+            image:
+              name: gardenlinux
+              version: 1443.9.0
+            type: m5.2xlarge
+          maxSurge: 20%
+          maxUnavailable: 0
+          maximum: 14
+          minimum: 2
+          name: dynamic
+          providerConfig:
+            apiVersion: aws.provider.extensions.gardener.cloud/v1alpha1
+            instanceMetadataOptions:
+              httpPutResponseHopLimit: 2
+              httpTokens: required
+            kind: WorkerConfig
+          systemComponents:
+            allow: false
+          volume:
+            size: 100Gi
+            type: gp3
+          zones:
+          - eu-central-1c
+        - annotations:
+            owner.csi.sap.com/supportComponent: HC-CSI Worker Description
+          cri:
+            name: containerd
+          kubernetes:
+            version: "1.29"
+          labels:
+            cluster-update.csi.sap.com/anytime: "1"
+            hana-cloud.workload-class/default: "1"
+            node-role.kubernetes.io/default: ""
+          machine:
+            image:
+              name: gardenlinux
+              version: 1443.9.0
+            type: m5.2xlarge
+          maxSurge: 15%
+          maxUnavailable: 0
+          maximum: 600
+          minimum: 0
+          name: default
+          systemComponents:
+            allow: true
+          volume:
+            size: 50Gi
+            type: gp3
+          zones:
+          - eu-central-1c
+        workersSettings:
+          sshAccess:
+            enabled: false
+      purpose: development
+      region: eu-central-1
+      secretBindingName: wl-aws-768904107031
+      systemComponents:
+        nodeLocalDNS:
+          enabled: true
+          forceTCPToClusterDNS: false
+          forceTCPToUpstreamDNS: false
+  shootKubeconfigExpirationSeconds: 86400
+  shootName: dis-oj5nd
+  vflowConfig:
+    credentialConfig: {}
+  vflowRepository: dis-oj5nd
+  vsystemIngress:
+    authTLSRef:
+      name: vora.conf.secop.client.ca.truststore
+    certificateConfig:
+      preferredChain: ISRG Root X2
+      privateKeyAlgorithm: ECDSA
+      privateKeySize: "384"
+    enabled: true
+    ipWhiteListRef:
+      field: allowlist
+      name: vsystem-ingress-allowlist
+    proxySSLSecretRef:
+      name: vora.conf.secop.ingress.client.truststore
+status:
+  apiServerURL: https://api.dis-oj5nd.di-dev.shoot.canary.k8s-hana.ondemand.com
+  auditlogServiceInstanceID: a5131691-c936-4840-bee3-ce87f862c4e3
+  auditlogServiceSecretRef: auditlog-sapcp-credentials
+  aws:
+    regional:
+      name: eu-central-1
+      vpcID: vpc-0cf244a3d371e48b0
+    zonal:
+    - name: eu-central-1c
+      natGatewayIPs:
+      - 3.76.227.224
+      physicalZone: euc1-az1
+      subnets:
+      - cidr: 10.250.200.0/22
+        id: subnet-055f8dc3bfef86578
+        name: shoot--di-dev--dis-oj5nd-private-utility-z0
+      - cidr: 10.250.212.0/22
+        id: subnet-03c0e222373d3c09d
+        name: shoot--di-dev--dis-oj5nd-public-utility-z0
+  clusterMainSecretRef:
+    kubeconfigRef: kubecfg
+    mainSecretName: i517651-aws-master-89gvf
+  conditions:
+  - lastTransitionTime: "2024-08-07T02:16:39Z"
+    message: shoot-and-hana-instance
+    observedGeneration: 1
+    reason: shoot_and_hana_instance
+    status: "False"
+    type: ResourceReady
+  - lastTransitionTime: "2024-08-07T02:17:10Z"
+    message: Infrastructure CR status is ready
+    observedGeneration: 1
+    reason: InfrastructureIsReady
+    status: "True"
+    type: InfrastructureReady
+  - lastTransitionTime: "2024-08-07T02:17:20Z"
+    message: ready
+    observedGeneration: 1
+    reason: ready
+    status: "True"
+    type: HanaInstanceReady
+  - lastTransitionTime: "2024-08-07T02:42:15Z"
+    message: Datahub is ready
+    observedGeneration: 1
+    reason: Datahub_is_ready
+    status: "True"
+    type: DataHubHealth
+  - lastTransitionTime: "2024-08-07T02:52:54Z"
+    message: Ingress is ready
+    observedGeneration: 1
+    reason: Ingress_is_ready
+    status: "True"
+    type: VsystemIngressHealth
+  credentialStatus:
+    credentials:
+      auditlog-service-key:
+        id: bba837a7-5666-4829-a402-553697ac5d77
+        secretStore:
+          field: i517651-aws-master-89gvf-auditlog
+          name: i517651-aws-master-89gvf
+          namespace: default
+        status: ready
+        type: auditlog-service-key
+      hana-cloud-service-key:
+        id: 5455a869-3960-42f6-ba50-56c554a2e223
+        secretStore:
+          field: i517651-aws-master-89gvf-hana
+          name: i517651-aws-master-89gvf
+          namespace: default
+        status: ready
+        type: hana-cloud-service-key
+      metering-service-key:
+        id: 033fc51a-2afd-4d5e-b2c1-dbc239833a16
+        secretStore:
+          field: i517651-aws-master-89gvf-metering
+          name: i517651-aws-master-89gvf
+          namespace: default
+        status: ready
+        type: metering-service-key
+      vflow-secret:
+        id: AKIA3GBSBSQLWHFPCB2L
+        secretStore:
+          field: vflow-user-key-info
+          name: i517651-aws-master-89gvf
+          namespace: default
+        status: ready
+        type: vflow-secret
+  csiReferencedResources:
+  - groupVersionKind:
+      kind: Secret
+      version: v1
+    namespacedName:
+      name: helm-values-master-default
+      namespace: installation
+  - groupVersionKind:
+      kind: ConfigMap
+      version: v1
+    namespacedName:
+      name: workload-cluster-info
+      namespace: installation
+  - groupVersionKind:
+      group: source.toolkit.fluxcd.io
+      kind: HelmRepository
+      version: v1
+    namespacedName:
+      name: csi-artifactory
+      namespace: installation
+  - groupVersionKind:
+      kind: Secret
+      version: v1
+    namespacedName:
+      name: hana-staging-user
+      namespace: installation
+  datahubVersion: 1.1-7969.f9dce01a
+  gardenerProjectName: di-dev
+  gardenerShootName: dis-oj5nd
+  hanaCloudInstanceID: 05d52bf4-3b18-40d0-a2af-bf59b21e8bda
+  hanaCloudServiceSecretRef: vora.conf.hana-password
+  kubernetesVersion: 1.29.5
+  lastMessage: shoot-and-hana-instance
+  lastStage: shoot-and-hana-instance
+  lastStageChangeTimestamp: "2024-08-07T07:29:42Z"
+  meteringServiceInstanceID: 361f61b4-7a15-4bbc-b073-01db5ead24d8
+  meteringServiceSecretRef: metering-sapcp-credentials
+  networkingCIDR: 10.250.0.0/16
+  outBoundIP: 3.76.227.224
+  outBoundIPs:
+  - 3.76.227.224
+  shootKubeconfigExpirationTimestamp: "2024-08-08T02:27:51Z"
+  shootLastOperation:
+    description: Shoot cluster has been successfully reconciled.
+    lastUpdateTime: "2024-08-07T02:27:09Z"
+    progress: 100
+    state: Succeeded
+    type: Reconcile
+  vpcID: vpc-0cf244a3d371e48b0
+  vsystemIngressHostName: vsystem.ingress.dis-oj5nd.di-dev.shoot.canary.k8s-hana.ondemand.com
+  workers:
+    default:
+      maximum: 600
+      nodeOSType: m5.2xlarge
+      nodeOSVersion: 1443.9.0
+    dynamic:
+      maximum: 14
+      minimum: 2
+      nodeOSType: m5.2xlarge
+      nodeOSVersion: 1443.9.0
+    static:
+      maximum: 4
+      minimum: 4
+      nodeOSType: m5.2xlarge
+      nodeOSVersion: 1443.9.0
