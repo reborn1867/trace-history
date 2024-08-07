@@ -14,7 +14,7 @@ metadata:
     bowen.watch: "true"
   name: default
   namespace: datahub
-  resourceVersion: "36094"
+  resourceVersion: "36109"
   uid: bcae3397-ff8a-46df-8241-487562d7fa86
 spec:
   backupCleanupCronSchedule: 0 0 * * *
@@ -482,6 +482,7 @@ status:
     previousPackage: 1.1-7969.f9dce01a
     reason: preRunLevelStarted
     status: "False"
+    supersededBy: 0d63cd
     timestamp: "2024-08-07T07:58:52Z"
     type: inProgress
   - message: preRunLevelStarted hooks successfully executed
@@ -537,4 +538,11 @@ status:
     status: "True"
     timestamp: "2024-08-07T08:21:53Z"
     type: postInstall
-  state: Pending
+  - message: Operation in progress
+    operationId: 0d63cd
+    package: 1.1-7992.41884eb0
+    previousPackage: 1.1-7992.41884eb0
+    reason: preRunLevelStarted
+    status: "True"
+    timestamp: "2024-08-07T08:21:54Z"
+    type: inProgress
