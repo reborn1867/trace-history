@@ -1,0 +1,499 @@
+apiVersion: installers.datahub.sap.com/v1alpha1
+kind: DataHub
+metadata:
+  annotations:
+    com.sap.datahub.installers.dependency.runlevel-mark: preRunLevelStarted
+    com.sap.datahub.installers.init.version: 1.1-7969.f9dce01a
+  creationTimestamp: "2024-08-07T07:58:49Z"
+  finalizers:
+  - com.sap.datahub.installers.dependency
+  - datahub-controller.datahub.sap.com
+  generation: 2
+  labels:
+    bowen.watch: "true"
+  name: default
+  namespace: datahub
+  resourceVersion: "25010"
+  uid: bcae3397-ff8a-46df-8241-487562d7fa86
+spec:
+  backupCleanupCronSchedule: 0 0 * * *
+  backupCronSchedule: 0 0 * * *
+  backupResourceConfiguration:
+    hanaBackupResource:
+      limits:
+        cpu: 300m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 64Mi
+    kubernetesBackupResource:
+      limits:
+        cpu: 300m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 64Mi
+    vrepLayerSnapshotBackupResource:
+      limits:
+        cpu: 300m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 64Mi
+  backupRetentionPeriod: 1.296e+06
+  cleanupLeftoversCronSchedule: 0 * * * *
+  cleanupLeftoversEnabled: true
+  cleanupLeftoversTimeToExpire: 10800
+  clusterID: i517651-aws-master-1sszq
+  deploymentType: DHaaS
+  deployments:
+  - vsystem
+  - diagnostic
+  - storage-gateway
+  diagnostic:
+    backupResourceConfiguration:
+      hanaBackupResource: {}
+      kubernetesBackupResource: {}
+      vrepLayerSnapshotBackupResource: {}
+    csi-integration:
+      enabled: true
+    diagnosticsStack:
+      enabled: false
+    docker: {}
+    elasticsearch:
+      enabled: true
+      watermark: {}
+    fluentd:
+      elasticsearchExporter: {}
+      enabled: true
+    grafana:
+      enabled: true
+    images:
+      authProxy: {}
+      debian: {}
+      elasticsearch: {}
+      fluentd: {}
+      grafana: {}
+      kibana: {}
+      kubeStateMetrics: {}
+      nodeExporter: {}
+      prometheus: {}
+    kibana:
+      enabled: true
+    networkPolicies:
+      enabled: false
+    nodeExporter: {}
+    overrides: |-
+      resourceDeployment:
+        certManagerDi: false
+    prometheusKubeStateMetrics:
+      enabled: true
+    prometheusNodeExporter:
+      enabled: true
+    prometheusServer:
+      enabled: true
+    proxy: {}
+    rbac:
+      enabled: false
+    resources:
+      authProxy:
+        resources: {}
+      dockerBase:
+        resources: {}
+      elasticsearch:
+        resources: {}
+      fluentd:
+        resources: {}
+      grafana:
+        resources: {}
+      kibana:
+        resources: {}
+      prometheusKubeStateMetrics:
+        resources: {}
+      prometheusNodeExporter:
+        resources: {}
+      prometheusServer:
+        resources: {}
+    version: {}
+    volumes:
+      elasticsearch: {}
+      prometheusServer: {}
+  disabledHooks:
+  - ml-api-scenario-migration
+  hana:
+    backupResourceConfiguration:
+      hanaBackupResource: {}
+      kubernetesBackupResource: {}
+      vrepLayerSnapshotBackupResource: {}
+    memoryRequest: 6Gi
+    networkPolicies:
+      enabled: false
+    proxy: {}
+    syncSleepTimeInSeconds: 30
+  hanaConfiguration:
+    cloud:
+      enabled: true
+    secretName: vora.conf.hana-password
+  helmVersion: v3
+  networkPolicies:
+    enabled: true
+  nodePoolAssignments:
+    auditlog: static
+    storage-gateway: static
+    vsystem.Apps: dynamic
+  nodePools:
+    dynamic:
+      datahub.sap.com/pool-dynamic: schedule
+    static:
+      datahub.sap.com/pool-static: schedule
+    system:
+      datahub.sap.com/pool-system: schedule
+  package: 1.1-7969.f9dce01a
+  postDenyAllIngress: true
+  proxy: {}
+  runLevel: Started
+  storageGateway:
+    backupResourceConfiguration:
+      hanaBackupResource: {}
+      kubernetesBackupResource: {}
+      vrepLayerSnapshotBackupResource: {}
+    networkPolicies:
+      enabled: false
+    overrides: |-
+      storagegateway:
+        resourceDeployment:
+          certManagerDi: false
+    proxy: {}
+    replicas: 3
+    resources:
+      limits: {}
+      requests: {}
+    ssl: {}
+  timeout: 3600
+  uaa:
+    backupResourceConfiguration:
+      hanaBackupResource: {}
+      kubernetesBackupResource: {}
+      vrepLayerSnapshotBackupResource: {}
+    configuration: {}
+    cpuRequest: 400m
+    hpaConfig:
+      enabled: true
+      maxReplicas: 5
+      minReplicas: 2
+    memoryLimit: "2048"
+    memoryRequest: "512"
+    networkPolicies:
+      enabled: false
+    passwordPolicy: {}
+    proxy: {}
+  vsystem:
+    UAA:
+      clientId: ""
+      deploy: false
+      endpoint: ""
+    auditlog:
+      btp:
+        clusterInstanceId: i517651-aws-master-1sszq
+      deploy: false
+      endpoint: https://auditlog:3030
+      use: true
+    backupResourceConfiguration:
+      hanaBackupResource: {}
+      kubernetesBackupResource: {}
+      vrepLayerSnapshotBackupResource: {}
+    deploymentInfo:
+      outboundPublicIp: 3.126.49.109
+    deploymentType: DHaaS
+    hana:
+      tls: {}
+    initialUserCreation:
+      secretName: vora.conf.initial.user
+    internalComm:
+      authClientID: ""
+      filename: ""
+      vrepClientID: ""
+      vsystemClientID: ""
+    layerStrategies:
+    - forceUpdateExtensionStrategyLayers: true
+      name: sdi-default-extension-strategy-1.1-7969.f9dce01a
+      parentStrategy: strat-default-1.1-7969.f9dce01a
+    - forceUpdateExtensionStrategyLayers: true
+      name: sdi-system-extension-strategy-1.1-7969.f9dce01a
+      parentStrategy: strat-system-1.1-7969.f9dce01a
+    - layers:
+      - vsolution-app-base-dis
+      - vsolution-dis-flowagent
+      - vsolution-rms-worker
+      - vflow-engine
+      - vflow-pysix-subengine
+      - vflow-sub-python36-dis
+      - vflow-sub-protocol7-dis
+      - vsolution-vflow-sub-abap
+      name: strat-default-1.1-7969.f9dce01a
+    - layers:
+      - vsolution-diagnostics-base
+      - vsolution-vsystem-ui
+      - vsolution-shared-ui
+      - connection-service
+      - dis-infrastructure
+      - vsolution-rms
+      - vsolution-modeler-ui
+      - vrelease-vflow-cluster-apps
+      - data-integration-gateway
+      - vsolution-tachyon
+      - vsolution-axino-dis
+      - vsolution-hyperon
+      - cfw-gateway
+      - cfw-connector-registry
+      - cfw-bigquery-connector
+      - cfw-confluent-connector
+      - cfw-mssql-connector
+      name: strat-system-1.1-7969.f9dce01a
+    networkPolicies:
+      enabled: true
+    overrides: |-
+      resourceDeployment:
+        certManagerDi: false
+      observability:
+        deployGrafanaDashboard: true
+        deployPrometheusAlerts: true
+        addPrometheusLabel: false
+      applicationRuntimeStorage:
+        enabled: false
+      resources:
+        vsystem:
+          requests:
+            cpu: "500m"
+            memory: "1500Mi"
+          limits:
+            cpu: "2"
+            memory: "8Gi"
+        auth:
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
+          limits:
+            cpu: "400m"
+            memory: "2Gi"
+        vsystem_vrep:
+          requests:
+            cpu: "500m"
+            memory: "2Gi"
+          limits:
+            cpu: "4"
+            memory: "8Gi"
+      auditlog:
+        store: btp
+        btp:
+          secretName: "auditlog-sapcp-credentials"
+          secretFile: "auditlog-sapcp-credentials"
+          subaccountTenantIdCluster: "e4af0f60-514e-4923-8c60-fd597967ccea"
+          subaccountTenantIdSystem: "e4af0f60-514e-4923-8c60-fd597967ccea"
+          diCloudSetup: false
+          oauth: false
+      vSystem:
+        dataIntegrationService: true
+        natsEnabled: false
+        housekeeperCleanupInterval: 86400
+        housekeeperCleanupTenants: true
+        housekeeperCleanupApps: false
+        housekeeperCleanupWorkloads: false
+        customSchedulerName: ""
+        handlerTimeout: "20m0s"
+        queryHanaMetrics:
+          enabled: true
+        databaseDriver:
+          agent:
+            vsystemUser:
+              MaxIdleConnectionTime: "10s"
+        features:
+          jwtTokenAuthentication:
+            enabled: true
+            issuers: >-
+              https://orcastarkiller.authentication.sap.hana.ondemand.com/token_keys
+              https://starkiller.authentication.sap.hana.ondemand.com/token_keys
+              https://master.authentication.sap.hana.ondemand.com/token_keys
+              https://rel.authentication.sap.hana.ondemand.com/token_keys
+            jwksRefreshInterval: 10m
+          blockWorkloadsAccessToHana: false
+          PolicyBundleServer:
+            enabled: true
+            cacheExpiration: 10m
+            cleanupInterval: 30m
+          PolicyBundleClient:
+            initialActivationTimeout: 1m
+            cacheExpiration: 5m
+            minDelay: 24s
+            maxDelay: 30s
+          vsystemGateway:
+            replicas: 2
+          userClientCertificates:
+            tenantCASignatureAlgorithm: rsa
+          enableRestrictedClusterAppPrivileges: false
+        natsMaxInactivity: 24h
+      vRep:
+        nfsSwitch:
+          nfsServerEnabled: false
+          enableVrepApps: false
+          enableVhomeApps: false
+          enableVrepWorkloads: false
+          enableVhomeWorkloads: false
+    proxy: {}
+    removePolicy: keep
+    runlevel: {}
+    solutions:
+    - name: cfw-bigquery-connector
+    - name: cfw-confluent-connector
+    - name: cfw-connector-registry
+    - name: cfw-gateway
+    - name: cfw-mssql-connector
+    - name: connection-service
+    - name: data-integration-gateway
+    - name: dis-infrastructure
+    - name: vflow-engine
+    - name: vflow-pysix-subengine
+    - name: vflow-sub-protocol7-dis
+    - name: vflow-sub-python36-dis
+    - name: vrelease-vflow-cluster-apps
+    - name: vsolution-app-base-dis
+    - name: vsolution-axino-dis
+    - name: vsolution-diagnostics-base
+    - name: vsolution-dis-flowagent
+    - name: vsolution-hyperon
+    - name: vsolution-modeler-ui
+    - name: vsolution-rms
+    - name: vsolution-rms-worker
+    - name: vsolution-shared-ui
+    - name: vsolution-tachyon
+    - name: vsolution-vflow-sub-abap
+    - name: vsolution-vsystem-ui
+    storageClassName: dh-default-ssd-storage-class
+    tenants:
+    - cloud: {}
+      isBlueGreenUpgrade: true
+      name: default
+      strategyName: sdi-default-extension-strategy-1.1-7969.f9dce01a
+      tenantAdminCreds: vora.conf.tenants.defaultadmin
+      vsystemAppParams:
+        vflow.baseRegistry: 726853116465.dkr.ecr.eu-central-1.amazonaws.com/ds
+        vflow.imagePullSecret: vflow-image-pull-secret
+        vflow.registry: 768904107031.dkr.ecr.eu-central-1.amazonaws.com/dis-upktx
+        vflow.registrySecret: vflow-secret
+      vsystemSecrets:
+      - vflow-secret
+      workloadQuotas: {}
+    - cloud: {}
+      isBlueGreenUpgrade: true
+      name: system
+      scheduledApps:
+      - connection-service
+      - rms
+      - data-integration-gateway
+      - shared
+      - modeler-ui
+      - monitoring-ui
+      - tachyon-service
+      - axino-service
+      - hyperon-service
+      - vflow
+      - vflow-ctrl-main
+      - vflow-ctrl-sub
+      - vflow-diagnostics
+      - vflow-image-build
+      - vflow-runtime-store
+      - cfw-bigquery-connector
+      - cfw-confluent-connector
+      - cfw-mssql-connector
+      - platform-proxy
+      - metrics-collector
+      strategyName: sdi-system-extension-strategy-1.1-7969.f9dce01a
+      tenantAdminCreds: vora.conf.initial.user
+      vsystemAppParams:
+        cfw.connector.registry.confluent.connector.enabled: "true"
+        cfw.connector.registry.mssql.connector.enabled: "true"
+        cfw.connector.registry.sample.connector.enabled: "true"
+        cfw.gateway.log.level: info
+        connection.service.privileged_ip_ranges: 10.250.0.0/16
+        data.integration.gateway.log.level: debug
+        datahub.axino.maxreplica: "200"
+        datahub.axino.minreplica: "5"
+        datahub.hyperon.log.level: DEBUG
+        diagnostics.gateway.monitoring.prometheusAddress: prometheus.monitoring.svc.cluster.local:9090
+        metrics.collector.enablefederationreport: "false"
+        metrics.collector.enablefederationtrafficmetricsreporting: "false"
+        metrics.collector.landscapename: dis-upktx
+        metrics.collector.subaccountid: 638bd7ad-fda6-4552-ac75-3882974f17be
+        platform.proxy.suffix: -sac-orcastarkiller.cfapps.sap.hana.ondemand.com
+        platform.proxy.uaa.url: orcastarkiller.authentication.sap.hana.ondemand.com
+        sap.di.rms.fixed.replicas: "2"
+        sap.di.rms.rt.cpu.limit: 4000m
+        sap.di.rms.rt.memory.limit: 4096Mi
+        sap.di.rms.scale.out.enabled: "true"
+        vflow.apps.requestsCPU: 250m
+        vflow.apps.scaleAverageCPU: "80"
+        vflow.baseRegistry: 726853116465.dkr.ecr.eu-central-1.amazonaws.com/ds
+        vflow.graph.podScheduleTimeout: 20m
+        vflow.image.build.concurrentLimit: "30"
+        vflow.imagePullSecret: vflow-image-pull-secret
+        vflow.registry: 768904107031.dkr.ecr.eu-central-1.amazonaws.com/dis-upktx
+        vflow.registrySecret: vflow-secret
+      vsystemSecrets:
+      - vflow-secret
+      - platform-proxy-uaa-cred
+      - metering-sapcp-credentials
+      workloadQuotas: {}
+    vRep: {}
+    vSystem:
+      auditlogAddress: https://auditlog:3030
+      clusterAdminHostnames: diagnostics-prometheus-server,storagegateway
+      features:
+        apiGateway: {}
+        vsystemGateway: {}
+      serviceType: ClusterIP
+    vflow:
+      enabled: true
+status:
+  conditions:
+  - message: Operation in progress
+    operationId: 13648f
+    package: 1.1-7969.f9dce01a
+    reason: preInstall
+    status: "False"
+    timestamp: "2024-08-07T07:58:50Z"
+    type: inProgress
+  - message: preInstall hooks successfully executed
+    operationId: 13648f
+    package: 1.1-7969.f9dce01a
+    status: "True"
+    timestamp: "2024-08-07T07:58:50Z"
+    type: preInstall
+  - message: postInstall hooks successfully executed
+    operationId: 13648f
+    package: 1.1-7969.f9dce01a
+    status: "True"
+    timestamp: "2024-08-07T07:58:51Z"
+    type: postInstall
+  - message: Operation in progress
+    operationId: 0a831c
+    package: 1.1-7969.f9dce01a
+    previousPackage: 1.1-7969.f9dce01a
+    reason: preRunLevelStarted
+    status: "False"
+    timestamp: "2024-08-07T07:58:52Z"
+    type: inProgress
+  - message: preRunLevelStarted hooks successfully executed
+    operationId: 0a831c
+    package: 1.1-7969.f9dce01a
+    status: "True"
+    timestamp: "2024-08-07T07:58:52Z"
+    type: preRunLevelStarted
+  - message: postRunLevelStarted hooks successfully executed
+    operationId: 0a831c
+    package: 1.1-7969.f9dce01a
+    status: "True"
+    timestamp: "2024-08-07T07:58:54Z"
+    type: postRunLevelStarted
+  expiresAt: "2024-08-07T08:58:55Z"
+  startedAt: "2024-08-07T07:58:55Z"
+  state: Ready
