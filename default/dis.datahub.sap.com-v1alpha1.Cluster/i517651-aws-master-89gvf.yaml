@@ -8,7 +8,7 @@ metadata:
   creationTimestamp: "2024-08-07T02:16:38Z"
   finalizers:
   - cluster.controller.dis.datahub
-  generation: 1
+  generation: 2
   labels:
     bowen.watch: "true"
     cluster-group.dis.datahub.sap.com/csi-landscape: i517651-aws
@@ -26,7 +26,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "235565"
+  resourceVersion: "235608"
   uid: 232a8874-0261-4f70-878d-390a6f80cf72
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -200,11 +200,11 @@ spec:
           secretName: vora.conf.initial.user
         layerStrategies:
         - forceUpdateExtensionStrategyLayers: true
-          name: sdi-default-extension-strategy-1.1-7969.f9dce01a
-          parentStrategy: strat-default-1.1-7969.f9dce01a
+          name: sdi-default-extension-strategy-1.1-7992.41884eb0
+          parentStrategy: strat-default-1.1-7992.41884eb0
         - forceUpdateExtensionStrategyLayers: true
-          name: sdi-system-extension-strategy-1.1-7969.f9dce01a
-          parentStrategy: strat-system-1.1-7969.f9dce01a
+          name: sdi-system-extension-strategy-1.1-7992.41884eb0
+          parentStrategy: strat-system-1.1-7992.41884eb0
         - layers:
           - vsolution-app-base-dis
           - vsolution-dis-flowagent
@@ -214,7 +214,7 @@ spec:
           - vflow-sub-python36-dis
           - vflow-sub-protocol7-dis
           - vsolution-vflow-sub-abap
-          name: strat-default-1.1-7969.f9dce01a
+          name: strat-default-1.1-7992.41884eb0
         - layers:
           - vsolution-diagnostics-base
           - vsolution-vsystem-ui
@@ -233,7 +233,7 @@ spec:
           - cfw-bigquery-connector
           - cfw-confluent-connector
           - cfw-mssql-connector
-          name: strat-system-1.1-7969.f9dce01a
+          name: strat-system-1.1-7992.41884eb0
         networkPolicies:
           enabled: true
         overrides: |-
@@ -352,7 +352,7 @@ spec:
         storageClassName: dh-default-ssd-storage-class
         tenants:
         - name: default
-          strategyName: sdi-default-extension-strategy-1.1-7969.f9dce01a
+          strategyName: sdi-default-extension-strategy-1.1-7992.41884eb0
           tenantAdminCreds: vora.conf.tenants.defaultadmin
           vsystemSecrets:
           - vflow-secret
@@ -376,7 +376,7 @@ spec:
           - cfw-bigquery-connector
           - cfw-confluent-connector
           - cfw-mssql-connector
-          strategyName: sdi-system-extension-strategy-1.1-7969.f9dce01a
+          strategyName: sdi-system-extension-strategy-1.1-7992.41884eb0
           tenantAdminCreds: vora.conf.initial.user
           vsystemAppParams:
             cfw.connector.registry.confluent.connector.enabled: "true"
@@ -409,7 +409,7 @@ spec:
       rollingUpdate:
         parallelism: 30
       type: RollingUpdate
-    version: 1.1-7969.f9dce01a
+    version: 1.1-7992.41884eb0
   domainSuffix: shoot.canary.k8s-hana.ondemand.com
   dynamicScheduler:
     enabled: false
@@ -455,7 +455,7 @@ spec:
     platformProxyUAAURL: orcastarkiller.authentication.sap.hana.ondemand.com
   postActions:
     enabled: true
-    image: 726853116465.dkr.ecr.eu-central-1.amazonaws.com/ds/com.sap.hana.cloud.cloudinfrastructure/csi-di-service-assembly-master:1.1-7969.f9dce01a
+    image: 726853116465.dkr.ecr.eu-central-1.amazonaws.com/ds/com.sap.hana.cloud.cloudinfrastructure/csi-di-service-assembly-master:1.1-7992.41884eb0
   providerType: aws
   shootConfig:
     apiVersion: core.gardener.cloud/v1beta1
