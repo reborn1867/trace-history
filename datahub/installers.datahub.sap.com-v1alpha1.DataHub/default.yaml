@@ -14,7 +14,7 @@ metadata:
     bowen.watch: "true"
   name: default
   namespace: datahub
-  resourceVersion: "35923"
+  resourceVersion: "36003"
   uid: bcae3397-ff8a-46df-8241-487562d7fa86
 spec:
   backupCleanupCronSchedule: 0 0 * * *
@@ -525,3 +525,9 @@ status:
     status: "True"
     timestamp: "2024-08-07T08:21:49Z"
     type: inProgress
+  - message: preInstall hooks successfully executed
+    operationId: 050ab6
+    package: 1.1-7992.41884eb0
+    status: "True"
+    timestamp: "2024-08-07T08:21:49Z"
+    type: preInstall
