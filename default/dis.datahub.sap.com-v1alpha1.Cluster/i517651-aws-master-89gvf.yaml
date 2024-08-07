@@ -26,7 +26,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "406692"
+  resourceVersion: "407417"
   uid: 232a8874-0261-4f70-878d-390a6f80cf72
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -785,9 +785,10 @@ status:
   - 3.76.227.224
   shootKubeconfigExpirationTimestamp: "2024-08-08T02:27:51Z"
   shootLastOperation:
-    description: Waiting until shoot network plugin has been reconciled
-    lastUpdateTime: "2024-08-07T11:32:52Z"
-    progress: 80
+    description: Waiting until all shoot worker nodes have updated the operating system
+      config
+    lastUpdateTime: "2024-08-07T11:33:02Z"
+    progress: 98
     state: Processing
     type: Reconcile
   vpcID: vpc-0cf244a3d371e48b0
