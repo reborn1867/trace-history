@@ -25,7 +25,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "243127"
+  resourceVersion: "243136"
   uid: f859ca99-35eb-4763-9bba-931bf36b1ce0
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -706,11 +706,11 @@ status:
   meteringServiceInstanceID: 361f61b4-7a15-4bbc-b073-01db5ead24d8
   networkingCIDR: 10.250.0.0/16
   shootLastOperation:
-    description: Waiting until shoot worker nodes have been reconciled
-    lastUpdateTime: "2024-08-07T07:39:09Z"
-    progress: 89
+    description: Waiting until shoot infrastructure has been reconciled
+    lastUpdateTime: "2024-08-07T07:42:15Z"
+    progress: 15
     state: Processing
-    type: Create
+    type: Reconcile
   vpcID: vpc-035a41a96171c71ac
   workers:
     default:
