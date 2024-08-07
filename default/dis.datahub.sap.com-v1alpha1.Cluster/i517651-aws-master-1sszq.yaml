@@ -27,7 +27,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "251558"
+  resourceVersion: "254822"
   uid: f859ca99-35eb-4763-9bba-931bf36b1ce0
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -683,9 +683,9 @@ status:
     mainSecretName: i517651-aws-master-1sszq
   conditions:
   - lastTransitionTime: "2024-08-07T07:32:33Z"
-    message: csi-install
+    message: datahub
     observedGeneration: 1
-    reason: csi_install
+    reason: datahub
     status: "False"
     type: ResourceReady
   - lastTransitionTime: "2024-08-07T07:32:53Z"
@@ -700,12 +700,6 @@ status:
     reason: ready
     status: "True"
     type: HanaInstanceReady
-  - lastTransitionTime: "2024-08-07T07:57:05Z"
-    message: Datahub is not ready
-    observedGeneration: 1
-    reason: Datahub_is_not_ready
-    status: "False"
-    type: DataHubHealth
   credentialStatus:
     credentials:
       auditlog-service-key:
@@ -771,9 +765,9 @@ status:
   hanaCloudInstanceID: dc945aa8-eb51-4906-8fe5-7f8a839d9336
   hanaCloudServiceSecretRef: vora.conf.hana-password
   kubernetesVersion: 1.29.5
-  lastMessage: csi-install
-  lastStage: csi-install
-  lastStageChangeTimestamp: "2024-08-07T07:49:24Z"
+  lastMessage: datahub
+  lastStage: datahub
+  lastStageChangeTimestamp: "2024-08-07T07:57:06Z"
   meteringServiceInstanceID: 361f61b4-7a15-4bbc-b073-01db5ead24d8
   meteringServiceSecretRef: metering-sapcp-credentials
   networkingCIDR: 10.250.0.0/16
