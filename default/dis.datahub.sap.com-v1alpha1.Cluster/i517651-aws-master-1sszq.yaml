@@ -25,7 +25,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "246154"
+  resourceVersion: "246336"
   uid: f859ca99-35eb-4763-9bba-931bf36b1ce0
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -680,9 +680,9 @@ status:
     mainSecretName: i517651-aws-master-1sszq
   conditions:
   - lastTransitionTime: "2024-08-07T07:32:33Z"
-    message: hana-service-key
+    message: pre-install
     observedGeneration: 1
-    reason: hana_service_key
+    reason: pre_install
     status: "False"
     type: ResourceReady
   - lastTransitionTime: "2024-08-07T07:32:53Z"
@@ -735,9 +735,9 @@ status:
   gardenerShootName: dis-upktx
   hanaCloudInstanceID: dc945aa8-eb51-4906-8fe5-7f8a839d9336
   kubernetesVersion: 1.29.5
-  lastMessage: hana-service-key
-  lastStage: hana-service-key
-  lastStageChangeTimestamp: "2024-08-07T07:44:56Z"
+  lastMessage: pre-install
+  lastStage: pre-install
+  lastStageChangeTimestamp: "2024-08-07T07:45:08Z"
   meteringServiceInstanceID: 361f61b4-7a15-4bbc-b073-01db5ead24d8
   networkingCIDR: 10.250.0.0/16
   outBoundIP: 3.126.49.109
