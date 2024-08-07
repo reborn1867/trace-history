@@ -25,7 +25,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "245080"
+  resourceVersion: "245203"
   uid: f859ca99-35eb-4763-9bba-931bf36b1ce0
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -692,10 +692,10 @@ status:
     status: "True"
     type: InfrastructureReady
   - lastTransitionTime: "2024-08-07T07:33:03Z"
-    message: reconciling
+    message: ready
     observedGeneration: 1
-    reason: reconciling
-    status: "False"
+    reason: ready
+    status: "True"
     type: HanaInstanceReady
   credentialStatus:
     credentials:
