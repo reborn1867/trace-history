@@ -29,7 +29,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "280185"
+  resourceVersion: "280196"
   uid: f859ca99-35eb-4763-9bba-931bf36b1ce0
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -685,9 +685,9 @@ status:
     mainSecretName: i517651-aws-master-1sszq
   conditions:
   - lastTransitionTime: "2024-08-07T08:20:18Z"
-    message: nginx-ingress-controller
+    message: connectivity-proxy
     observedGeneration: 2
-    reason: nginx_ingress_controller
+    reason: connectivity_proxy
     status: "False"
     type: ResourceReady
   - lastTransitionTime: "2024-08-07T08:20:12Z"
@@ -780,9 +780,9 @@ status:
   hanaCloudInstanceID: dc945aa8-eb51-4906-8fe5-7f8a839d9336
   hanaCloudServiceSecretRef: vora.conf.hana-password
   kubernetesVersion: 1.29.5
-  lastMessage: nginx-ingress-controller
-  lastStage: nginx-ingress-controller
-  lastStageChangeTimestamp: "2024-08-07T08:32:33Z"
+  lastMessage: connectivity-proxy
+  lastStage: connectivity-proxy
+  lastStageChangeTimestamp: "2024-08-07T08:32:47Z"
   meteringServiceInstanceID: 361f61b4-7a15-4bbc-b073-01db5ead24d8
   meteringServiceSecretRef: metering-sapcp-credentials
   networkingCIDR: 10.250.0.0/16
