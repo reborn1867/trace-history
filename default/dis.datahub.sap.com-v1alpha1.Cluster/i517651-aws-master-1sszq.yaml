@@ -29,7 +29,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "280196"
+  resourceVersion: "280363"
   uid: f859ca99-35eb-4763-9bba-931bf36b1ce0
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -708,9 +708,9 @@ status:
     reason: Datahub_is_ready
     status: "True"
     type: DataHubHealth
-  - lastTransitionTime: "2024-08-07T08:09:17Z"
+  - lastTransitionTime: "2024-08-07T08:34:34Z"
     message: Ingress is ready
-    observedGeneration: 1
+    observedGeneration: 2
     reason: Ingress_is_ready
     status: "True"
     type: VsystemIngressHealth
