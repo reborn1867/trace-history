@@ -25,7 +25,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "246336"
+  resourceVersion: "246349"
   uid: f859ca99-35eb-4763-9bba-931bf36b1ce0
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -656,6 +656,7 @@ spec:
 status:
   apiServerURL: https://api.dis-upktx.di-dev.shoot.canary.k8s-hana.ondemand.com
   auditlogServiceInstanceID: a5131691-c936-4840-bee3-ce87f862c4e3
+  auditlogServiceSecretRef: auditlog-sapcp-credentials
   aws:
     regional:
       name: eu-central-1
@@ -734,11 +735,13 @@ status:
   gardenerProjectName: di-dev
   gardenerShootName: dis-upktx
   hanaCloudInstanceID: dc945aa8-eb51-4906-8fe5-7f8a839d9336
+  hanaCloudServiceSecretRef: vora.conf.hana-password
   kubernetesVersion: 1.29.5
   lastMessage: pre-install
   lastStage: pre-install
   lastStageChangeTimestamp: "2024-08-07T07:45:08Z"
   meteringServiceInstanceID: 361f61b4-7a15-4bbc-b073-01db5ead24d8
+  meteringServiceSecretRef: metering-sapcp-credentials
   networkingCIDR: 10.250.0.0/16
   outBoundIP: 3.126.49.109
   outBoundIPs:
