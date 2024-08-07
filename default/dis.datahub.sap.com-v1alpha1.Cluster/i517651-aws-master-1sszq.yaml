@@ -27,7 +27,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "403020"
+  resourceVersion: "403762"
   uid: f859ca99-35eb-4763-9bba-931bf36b1ce0
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -789,10 +789,10 @@ status:
   - 3.126.49.109
   shootKubeconfigExpirationTimestamp: "2024-08-08T07:43:15Z"
   shootLastOperation:
-    description: Waiting until worker resource status is updated with latest machine
-      deployments
-    lastUpdateTime: "2024-08-07T11:27:39Z"
-    progress: 84
+    description: Initializing secrets management, Waiting until the backup entry has
+      been reconciled
+    lastUpdateTime: "2024-08-07T11:28:48Z"
+    progress: 6
     state: Processing
     type: Reconcile
   vpcID: vpc-035a41a96171c71ac
