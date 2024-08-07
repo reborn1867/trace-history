@@ -27,7 +27,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "439231"
+  resourceVersion: "439240"
   uid: f859ca99-35eb-4763-9bba-931bf36b1ce0
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -689,10 +689,10 @@ status:
     status: "False"
     type: ResourceReady
   - lastTransitionTime: "2024-08-07T08:20:12Z"
-    message: Infrastructure CR status is not ready
+    message: Infrastructure CR status is ready
     observedGeneration: 2
-    reason: InfrastructureIsNotReady
-    status: "False"
+    reason: InfrastructureIsReady
+    status: "True"
     type: InfrastructureReady
   - lastTransitionTime: "2024-08-07T08:20:13Z"
     message: ready
