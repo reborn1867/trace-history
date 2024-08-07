@@ -26,7 +26,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "440301"
+  resourceVersion: "703610"
   uid: 232a8874-0261-4f70-878d-390a6f80cf72
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -786,7 +786,7 @@ status:
   shootKubeconfigExpirationTimestamp: "2024-08-08T18:32:21Z"
   shootLastOperation:
     description: Shoot cluster has been successfully reconciled.
-    lastUpdateTime: "2024-08-07T11:37:35Z"
+    lastUpdateTime: "2024-08-07T20:19:15Z"
     progress: 100
     state: Succeeded
     type: Reconcile
