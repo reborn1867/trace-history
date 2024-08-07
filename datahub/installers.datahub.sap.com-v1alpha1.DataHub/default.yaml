@@ -3,6 +3,7 @@ kind: DataHub
 metadata:
   annotations:
     com.sap.datahub.installers.dependency.runlevel-mark: preRunLevelStarted
+    com.sap.datahub.installers.dependency.upgrade-mark: 1.1-7992.41884eb0
     com.sap.datahub.installers.init.version: 1.1-7969.f9dce01a
   creationTimestamp: "2024-08-07T07:58:49Z"
   finalizers:
@@ -13,7 +14,7 @@ metadata:
     bowen.watch: "true"
   name: default
   namespace: datahub
-  resourceVersion: "32926"
+  resourceVersion: "35797"
   uid: bcae3397-ff8a-46df-8241-487562d7fa86
 spec:
   backupCleanupCronSchedule: 0 0 * * *
