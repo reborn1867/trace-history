@@ -1,0 +1,35 @@
+apiVersion: v1
+data:
+  config.yaml: |-
+    domain: "reg.i517651-aws.aws.di-dev.hanacloud.ondemand.com"
+    caSecretName: service-broker-ca
+    certNamespace: default
+    certSecretName: service-broker
+    defaultRmsPodCountQuota: 2
+    defaultTenantPodCountQuota: 300
+    disableRmsQuotas: false
+    disableWorkloadQuotas: true
+    enableBasicAuth: true
+    enableClientTLSAuth: false
+    enableReturningOutBoundIP: true
+    logLevel: info
+    minimalPodCountQuota: 5
+    minimalRmsPodCountQuota: 1
+    multiClusterGroupsEnabled: false
+    namespace: default
+    rotationInterval: 60m
+    serviceID: 740a2273-22be-4fd3-b0e1-1328fd12e98
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2024-08-07T02:14:52Z"
+  labels:
+    app.kubernetes.io/managed-by: csi
+    app.kubernetes.io/name: csi-di-service-broker
+    app.kubernetes.io/part-of: csi-di-infra
+    app.kubernetes.io/version: 1.0-227.d6e4025git
+    bowen.watch: "true"
+    hc.sap.com/hc-provisioned: "True"
+  name: dis-broker-config
+  namespace: default
+  resourceVersion: "4870"
+  uid: d6964698-05d7-481e-bf54-6125d911bab4
