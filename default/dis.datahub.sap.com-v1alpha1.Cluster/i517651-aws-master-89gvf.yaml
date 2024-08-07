@@ -26,7 +26,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "407417"
+  resourceVersion: "408184"
   uid: 232a8874-0261-4f70-878d-390a6f80cf72
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -685,10 +685,10 @@ status:
     status: "False"
     type: ResourceReady
   - lastTransitionTime: "2024-08-07T08:20:05Z"
-    message: Infrastructure CR status is not ready
+    message: Infrastructure CR status is ready
     observedGeneration: 2
-    reason: InfrastructureIsNotReady
-    status: "False"
+    reason: InfrastructureIsReady
+    status: "True"
     type: InfrastructureReady
   - lastTransitionTime: "2024-08-07T08:20:06Z"
     message: ready
@@ -785,11 +785,10 @@ status:
   - 3.76.227.224
   shootKubeconfigExpirationTimestamp: "2024-08-08T02:27:51Z"
   shootLastOperation:
-    description: Waiting until all shoot worker nodes have updated the operating system
-      config
-    lastUpdateTime: "2024-08-07T11:33:02Z"
-    progress: 98
-    state: Processing
+    description: Shoot cluster has been successfully reconciled.
+    lastUpdateTime: "2024-08-07T11:37:35Z"
+    progress: 100
+    state: Succeeded
     type: Reconcile
   vpcID: vpc-0cf244a3d371e48b0
   vsystemIngressHostName: vsystem.ingress.dis-oj5nd.di-dev.shoot.canary.k8s-hana.ondemand.com
