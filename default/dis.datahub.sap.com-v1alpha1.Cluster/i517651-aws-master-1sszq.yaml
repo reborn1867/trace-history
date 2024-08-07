@@ -26,7 +26,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "249165"
+  resourceVersion: "249322"
   uid: f859ca99-35eb-4763-9bba-931bf36b1ce0
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -682,9 +682,9 @@ status:
     mainSecretName: i517651-aws-master-1sszq
   conditions:
   - lastTransitionTime: "2024-08-07T07:32:33Z"
-    message: csi-fluxcd-source-controller
+    message: csi-install
     observedGeneration: 1
-    reason: csi_fluxcd_source_controller
+    reason: csi_install
     status: "False"
     type: ResourceReady
   - lastTransitionTime: "2024-08-07T07:32:53Z"
@@ -764,9 +764,9 @@ status:
   hanaCloudInstanceID: dc945aa8-eb51-4906-8fe5-7f8a839d9336
   hanaCloudServiceSecretRef: vora.conf.hana-password
   kubernetesVersion: 1.29.5
-  lastMessage: csi-fluxcd-source-controller
-  lastStage: csi-fluxcd-source-controller
-  lastStageChangeTimestamp: "2024-08-07T07:49:09Z"
+  lastMessage: csi-install
+  lastStage: csi-install
+  lastStageChangeTimestamp: "2024-08-07T07:49:24Z"
   meteringServiceInstanceID: 361f61b4-7a15-4bbc-b073-01db5ead24d8
   meteringServiceSecretRef: metering-sapcp-credentials
   networkingCIDR: 10.250.0.0/16
