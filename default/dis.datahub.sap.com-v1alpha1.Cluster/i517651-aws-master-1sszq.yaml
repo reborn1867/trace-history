@@ -25,7 +25,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "243136"
+  resourceVersion: "244344"
   uid: f859ca99-35eb-4763-9bba-931bf36b1ce0
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -654,12 +654,29 @@ spec:
     proxySSLSecretRef:
       name: vora.conf.secop.ingress.client.truststore
 status:
+  apiServerURL: https://api.dis-upktx.di-dev.shoot.canary.k8s-hana.ondemand.com
   auditlogServiceInstanceID: a5131691-c936-4840-bee3-ce87f862c4e3
   aws:
     regional:
       name: eu-central-1
       vpcID: vpc-035a41a96171c71ac
+    zonal:
+    - name: eu-central-1c
+      natGatewayIPs:
+      - 3.126.49.109
+      physicalZone: euc1-az1
+      subnets:
+      - cidr: 10.250.128.0/18
+        id: subnet-0c4c994bb9e45f761
+        name: shoot--di-dev--dis-upktx-nodes-z0
+      - cidr: 10.250.200.0/22
+        id: subnet-00c2c190a1affe69f
+        name: shoot--di-dev--dis-upktx-private-utility-z0
+      - cidr: 10.250.212.0/22
+        id: subnet-013ce60709e2fba1b
+        name: shoot--di-dev--dis-upktx-public-utility-z0
   clusterMainSecretRef:
+    kubeconfigRef: kubecfg
     mainSecretName: i517651-aws-master-1sszq
   conditions:
   - lastTransitionTime: "2024-08-07T07:32:33Z"
@@ -669,10 +686,10 @@ status:
     status: "False"
     type: ResourceReady
   - lastTransitionTime: "2024-08-07T07:32:53Z"
-    message: Infrastructure CR status is not ready
+    message: Infrastructure CR status is ready
     observedGeneration: 1
-    reason: InfrastructureIsNotReady
-    status: "False"
+    reason: InfrastructureIsReady
+    status: "True"
     type: InfrastructureReady
   - lastTransitionTime: "2024-08-07T07:33:03Z"
     message: ready
@@ -698,6 +715,16 @@ status:
           namespace: default
         status: ready
         type: metering-service-key
+      vflow-secret:
+        id: AKIA3GBSBSQLVYSU2YVZ
+        secretStore:
+          field: vflow-user-key-info
+          name: i517651-aws-master-1sszq
+          namespace: default
+        status: ready
+        type: vflow-secret
+  gardenerProjectName: di-dev
+  gardenerShootName: dis-upktx
   hanaCloudInstanceID: dc945aa8-eb51-4906-8fe5-7f8a839d9336
   kubernetesVersion: 1.29.5
   lastMessage: shoot-and-hana-instance
@@ -705,11 +732,15 @@ status:
   lastStageChangeTimestamp: "2024-08-07T07:32:53Z"
   meteringServiceInstanceID: 361f61b4-7a15-4bbc-b073-01db5ead24d8
   networkingCIDR: 10.250.0.0/16
+  outBoundIP: 3.126.49.109
+  outBoundIPs:
+  - 3.126.49.109
+  shootKubeconfigExpirationTimestamp: "2024-08-08T07:43:15Z"
   shootLastOperation:
-    description: Waiting until shoot infrastructure has been reconciled
-    lastUpdateTime: "2024-08-07T07:42:15Z"
-    progress: 15
-    state: Processing
+    description: Shoot cluster has been successfully reconciled.
+    lastUpdateTime: "2024-08-07T07:43:08Z"
+    progress: 100
+    state: Succeeded
     type: Reconcile
   vpcID: vpc-035a41a96171c71ac
   workers:
