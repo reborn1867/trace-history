@@ -14,7 +14,7 @@ metadata:
     bowen.watch: "true"
   name: default
   namespace: datahub
-  resourceVersion: "35831"
+  resourceVersion: "35896"
   uid: bcae3397-ff8a-46df-8241-487562d7fa86
 spec:
   backupCleanupCronSchedule: 0 0 * * *
@@ -501,7 +501,7 @@ status:
     package: 1.1-7992.41884eb0
     previousPackage: 1.1-7969.f9dce01a
     reason: preUpgrade
-    status: "True"
+    status: "False"
     timestamp: "2024-08-07T08:21:42Z"
     type: inProgress
   - message: preUpgrade hooks successfully executed
@@ -510,4 +510,10 @@ status:
     status: "True"
     timestamp: "2024-08-07T08:21:43Z"
     type: preUpgrade
+  - message: postUpgrade hooks successfully executed
+    operationId: dff042
+    package: 1.1-7992.41884eb0
+    status: "True"
+    timestamp: "2024-08-07T08:21:45Z"
+    type: postUpgrade
   state: Pending
