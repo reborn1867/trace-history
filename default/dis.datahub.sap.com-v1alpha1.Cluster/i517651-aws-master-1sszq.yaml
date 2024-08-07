@@ -25,7 +25,7 @@ metadata:
     kind: ClusterGroup
     name: i517651-aws-master
     uid: 47fded03-7344-4ac6-acd9-da5c275e4825
-  resourceVersion: "246142"
+  resourceVersion: "246154"
   uid: f859ca99-35eb-4763-9bba-931bf36b1ce0
 spec:
   auditLogPolicyForGardener: di-gardener-audit-policy
@@ -707,6 +707,14 @@ status:
           namespace: default
         status: ready
         type: auditlog-service-key
+      hana-cloud-service-key:
+        id: 2cea1422-3abc-4d06-8dad-b41b40dd8f22
+        secretStore:
+          field: i517651-aws-master-1sszq-hana
+          name: i517651-aws-master-1sszq
+          namespace: default
+        status: ready
+        type: hana-cloud-service-key
       metering-service-key:
         id: fd375c78-5e04-46dd-b385-68491a3522a5
         secretStore:
