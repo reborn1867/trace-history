@@ -14,7 +14,7 @@ metadata:
     bowen.watch: "true"
   name: default
   namespace: datahub
-  resourceVersion: "36478"
+  resourceVersion: "46838"
   uid: bcae3397-ff8a-46df-8241-487562d7fa86
 spec:
   backupCleanupCronSchedule: 0 0 * * *
@@ -559,5 +559,6 @@ status:
     timestamp: "2024-08-07T08:21:57Z"
     type: postRunLevelStarted
   expiresAt: "2024-08-07T09:22:13Z"
+  reason: Expired
   startedAt: "2024-08-07T08:22:13Z"
-  state: Ready
+  state: Failed
